@@ -1,7 +1,7 @@
 <template>
     <v-app>
       <v-container class="mt-16" fluid>
-        <h1 v-if="!inFolderView">Root Directories</h1>
+        <h1 v-if="!inFolderView"></h1>
   
         <!-- Add Directory Button -->
         <v-btn @click="showAddRootDialog" color="primary" class="mb-2" style="text-transform: capitalize;" v-if="!inFolderView">Add a Directory</v-btn>
@@ -26,8 +26,8 @@
               cols="12" md="3" lg="2"  
             >
               <v-card class="directory-item" @click="selectDirectory(directory)" elevation="0">
-                <v-card-title>
-                  <v-icon left>mdi-folder</v-icon>
+                <v-card-title class="text-wrap" style="font-size: 16px;">
+                  <v-icon left color="yellow" size="34">mdi-folder</v-icon>
                   {{ directory.name }}
                 </v-card-title>
               </v-card>
@@ -52,7 +52,7 @@
             >
               <v-card class="directory-item" @click="selectChildDirectory(child)" elevation="0">
                 <v-card-title>
-                  <v-icon left>mdi-folder</v-icon>
+                  <v-icon left color="yellow">mdi-folder</v-icon>
                   {{ child.name }}
                 </v-card-title>
               </v-card>
@@ -81,11 +81,17 @@
   
         <!-- Dialogs remain the same -->
         <!-- Dialog for Adding Root Directory -->
-        <v-dialog v-model="addRootDialog" max-width="500px">
+        <v-dialog v-model="addRootDialog" max-width="800px">
           <v-card>
-            <v-card-title>Add Root Directory</v-card-title>
+            <v-toolbar color="white">
+              <v-card-title>Add Root Directory</v-card-title>
+              <v-spacer></v-spacer>
+              <v-btn @click="addRootDialog = false" icon><v-icon>mdi-close</v-icon></v-btn>
+
+
+            </v-toolbar>
             <v-card-text>
-              <v-text-field v-model="newRootDirectory" label="Directory Name"></v-text-field>
+              <v-text-field v-model="newRootDirectory" label="Directory Name" variant="outlined"></v-text-field>
             </v-card-text>
             <v-card-actions>
               <v-btn color="primary" @click="addRootDirectory">Add</v-btn>

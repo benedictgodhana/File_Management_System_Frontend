@@ -44,7 +44,7 @@
         </v-list>
       </v-navigation-drawer>
 
-      <v-app-bar app color="primary" dark elevation="0">
+      <v-app-bar app color="neutral" dark elevation="3">
         <v-toolbar-title>File Management System</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-btn icon @click="toggleDrawer">
